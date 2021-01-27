@@ -4,20 +4,28 @@
   "description": "Sweet weather API to display the current weather in the specified city.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
   },
   "keywords": [
     "weather",
-    "rest",
-    "api",
+    "RESTful",
+    "API",
     "javascript"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/olgazasenko/sweet-weather"
+    "url": "https://git.heroku.com/sweetweather.git"
   },
   "author": "Olga",
   "license": "ISC",
-  "dependencies": {}
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "node-fetch": "^2.6.1"
+  },
+  "engines": {
+    "node": "14.x"
+  },
+  "devDependencies": {}
 }

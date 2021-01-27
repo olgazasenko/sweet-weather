@@ -1,12 +1,20 @@
-const http = require('http');
+const express = require('express');
+const bodyParser = require('body-parser');
 const port = process.env.PORT || 3000;
+const app = express();
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/html');
-  res.end('<h1>Hello World</h1>');
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+
+const router = require('./routes/routes');
+router.routesConfig(app);
+
+app.use(express.static('./', {index: 'index.html'}))
+
+app.use((req, res) => {
+  res.status(404).send({url: req.originalUrl + ' not found'})
 });
 
-server.listen(port,() => {
+app.listen(port,() => {
   console.log(`Server running at port ${port}`);
 });
