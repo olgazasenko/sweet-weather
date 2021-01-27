@@ -4,7 +4,8 @@
   "description": "Sweet weather API to display the current weather in the specified city.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "keywords": [
     "weather",
@@ -12,9 +13,11 @@
     "api",
     "javascript"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/olgazasenko/sweet-weather"
+  },
   "author": "Olga",
   "license": "ISC",
-  "dependencies": {
-    "express": "^4.17.1"
-  }
+  "dependencies": {}
 }

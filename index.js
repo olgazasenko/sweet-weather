@@ -1,8 +1,12 @@
-const express = require("express");
-const app = express();
-app.get("/url", (req, res, next) => {
- res.json(["Tony","Lisa","Michael","Ginger","Food"]);
+const http = require('http');
+const port = process.env.PORT || 3000;
+
+const server = http.createServer((req, res) => {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/html');
+  res.end('<h1>Hello World</h1>');
 });
-app.listen(3000, () => {
- console.log("Server running on port 3000");
+
+server.listen(port,() => {
+  console.log(`Server running at port ${port}`);
 });
