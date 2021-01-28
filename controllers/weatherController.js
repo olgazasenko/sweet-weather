@@ -3,6 +3,7 @@ require("dotenv").config();
 
 exports.getWeather = (req, res) => {
 	const cityName = req.params.city;
+	console.log(process.env.API_KEY);
 	return fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${process.env.API_KEY}&units=metric`)
 		  .then(response => response.json())
 		  .then(data => res.status(200).send(data))

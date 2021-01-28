@@ -3,9 +3,6 @@ const API_URL = "https://sweetweather.herokuapp.com";
 document.addEventListener('DOMContentLoaded', () => {
 	const showButton = document.querySelector('.show-weather');
 	const cityInput = document.querySelector('.city-input');
-	const temp = document.querySelector('.temp');
-	const feelsLike = document.querySelector('.feels-like');
-	const humidity = document.querySelector('.humidity');
 	
 	showButton.disabled = true;
 	
@@ -14,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	});
 
 	cityInput.addEventListener('keyup', (event) => {
-		if (event.keyCode === 13) {
+		if (event.code === 'Enter') {
 			showWeather();
 		} else if (cityInput.value.length > 0) {
 			showButton.disabled = false;
