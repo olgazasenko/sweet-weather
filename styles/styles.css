@@ -1,0 +1,14 @@
+#root {
+	display: flex;
+	flex-direction: column;
+}
+
+#weather-search {
+	display: flex;
+	flex-direction: row;
+}
+
+#results-title { 
+    display: flex;
+	flex-direction: row;
+}

@@ -3,17 +3,20 @@
   <head>
     <meta charset="utf-8">
     <title>Weather API</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
     <link rel="stylesheet" href="styles/styles.css">
 	<script src="scripts/script.js"></script>
   </head>
   <body>
-    <label>Enter city name</label>
-    <input type="text" 
-	       class="city-input"
-		   autofocus="true"></input>
-	<button type="button" class="show-weather">Show weather</button>
-	<p class="temp"></p>
-	<p class="feels-like"></p>
-	<p class="humidity"></p>
+	<div id="root">
+		<div id="weather-search">
+			<input type="text" 
+				   class="city-input"
+				   autofocus="true"
+				   placeholder="Weather in your city..."></input>
+			<button type="button" class="show-weather">Show weather</button>
+		</div>
+		<div id="results"></div>
+	</div>
   </body>
 </html>
