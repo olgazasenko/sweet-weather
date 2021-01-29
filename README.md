@@ -1,26 +1,37 @@
 # sweet-weather
-Sweet weather API to display the current weather in the specified city.
+The weather API to display the current weather in the specified city. Proxy server calls the <a href="https://openweathermap.org/current">Open Weather API</a> to get the real data. 
+Weather can be queried like so: curl https://sweetweather.herokuapp.com/v1/weather?city=ottawa. The returned data is in JSON format.
 ## Notes
-
+Used JavaScript for the front-end and Node.js for the backend. JavaScript is fast, there is no compilation needed, and all browsers understand it. One disadvantage is that the source code is visible to everybody.
+I have very little experience with Node.js before and this was an awesome opportunity to get to know it better. The advantages of using Node.js is that it is also very fast, and there are thousands of packages available in npm to enhance it.
 ### Date
-The date you're submitting this.
+Jan 28, 2021
 ### Location of deployed application
-If applicable, please provide the url where we can find and interact with your running application.
+https://sweetweather.herokuapp.com/
 ### Time spent
-How much time did you spend on the assignment? Normally, this is expressed in hours.
+8hrs (really got into this project and could not stop)
 ### Assumptions made
-Use this section to tell us about any assumptions that you made when creating your solution.
+- Just a simple API for fetching the current weather in the given city.
+- User will access this website from a desktop - the website is not mobile friendly
+- There are only a handful of users at a time - not scaled for heavy traffic 
+- The name of the city will be spelled correctly 
+- Users know what they are searching for - there is no autocomplete
+- Only tested in Chrome browser
 ### Shortcuts/Compromises made
-If applicable. Did you do something that you feel could have been done better in a real-world application? Please
-let us know.
+- UI could be much more elaborate - I left it for last in this case
+- Used <a href="https://watercss.kognise.dev/">water.css</a> for quick styling
+- I realled wanted to set the API_URL through an environment variable by using webpack and dotenv, but it didn't work out this time. Ideally it would set based on the mode - development or production.
 ### Stretch goals attempted
-If applicable, use this area to tell us what stretch goals you attempted. What went well? What do you wish you
-could have done better? If you didn't attempt any of the stretch goals, feel free to let us know why.
+- simple UI
+- deployed API
+- proxied a real server
+I will add authentication in my own time (to a separate branch or project). It's something I've never done before and really want to try it out!
 ### Instructions to run assignment locally
-If applicable, please provide us with the necessary instructions to run your solution.
+- npm install
+- change the API_URL in scripts/script.js to "http://localhost:3000"
+- node index.js
 ### What did you not include in your solution that you want us to know about?
-Were you short on time and not able to include something that you want us to know
-about? Please list it here so that we know that you considered it.
-### Other information about your submission that you feel it's important that we know if applicable.
+The weather API website recommends using the cityId instead of the city name for better accuracy. They provide a large JSON file of all the cities.
+I would like to read it and get the city id from it. And I would like to figure out the best way to do it. For example, do we need to read this file every time a request comes in? Can we cache it? 
 ### Your feedback on this technical challenge
-Have feedback for how we could make this assignment better? Please let us know.
+Really enjoyed this little project! It sparked my interest and I want to do more of these projects in my free time now.
