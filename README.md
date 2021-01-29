@@ -1,8 +1,8 @@
 # sweet-weather
-The weather API to display the current weather in the specified city. Proxy server calls the <a href="https://openweathermap.org/current">Open Weather API</a> to get the real data. 
+The weather API to display the current weather in the specified city. Proxy server calls the <a href="https://openweathermap.org/current">Open Weather API</a> to get the real data.<br> 
 Weather can be queried like so: curl https://sweetweather.herokuapp.com/v1/weather?city=ottawa. The returned data is in JSON format.
 ## Notes
-Used JavaScript for the front-end and Node.js for the backend. JavaScript is fast, there is no compilation needed, and all browsers understand it. One disadvantage is that the source code is visible to everybody.
+Used JavaScript for the front-end and Node.js for the backend. JavaScript is fast, there is no compilation needed, and all browsers understand it. One disadvantage is that the source code is visible to everybody.<br>
 I have very little experience with Node.js before and this was an awesome opportunity to get to know it better. The advantages of using Node.js is that it is also very fast, and there are thousands of packages available in npm to enhance it.
 ### Date
 Jan 28, 2021
@@ -24,7 +24,7 @@ https://sweetweather.herokuapp.com/
 ### Stretch goals attempted
 - simple UI
 - deployed API
-- proxied a real server
+- proxied a real server<br>
 I will add authentication in my own time (to a separate branch or project). It's something I've never done before and really want to try it out!
 ### Instructions to run assignment locally
 - npm install
