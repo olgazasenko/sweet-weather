@@ -1,12 +1,14 @@
-const API_URL = "https://sweetweather.herokuapp.com";
+const API_URL = "https://sweetweather.herokuapp.com"; // ideally this should be set through an environment variable
+const NUM_DISPLAY_ELEMENTS = 7;
+const CELCIUS_SUFFIX = "\u00B0 C";
 
 document.addEventListener('DOMContentLoaded', () => {
-	const showButton = document.querySelector('.show-weather');
+	const showWeatherButton = document.querySelector('.show-weather');
 	const cityInput = document.querySelector('.city-input');
 	
-	showButton.disabled = true;
+	showWeatherButton.disabled = true; // disable until the user enters something
 	
-	showButton.addEventListener('click', () => {
+	showWeatherButton.addEventListener('click', () => {
 		showWeather();
 	});
 
@@ -22,18 +24,23 @@ document.addEventListener('DOMContentLoaded', () => {
 	
 	
 	const showWeather = async () => {
-		clearResults();
-		const response = await fetch(`${API_URL}/v1/weather/${cityInput.value}`, {
-			method: 'GET',
-			headers: {
-				'Content-Type': 'application/json'
+		clearResults(); // clear the results before showing new ones
+		const cityName = cityInput.value;
+		try {
+			const response = await fetch(`${API_URL}/v1/weather?city=${cityName}`, {
+				method: 'GET',
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			});
+			const data = await response.json();
+			if (data.cod === 200) {
+				displayWeather(data);
+			} else {
+				displayError(data);
 			}
-		});
-		const data = await response.json();
-		if (data.cod === 200) {
-			displayWeather(data);
-		} else {
-			displayError(data);
+		} catch (err) {
+			console.log(`Could not fetch the weather for ${cityName} from the server`, err);
 		}
 	};
 });
@@ -49,24 +56,24 @@ function displayWeather(data) {
 	title.appendChild(cityName);
 	title.appendChild(icon);
 	
-	const children = Array(7);
+	const children = Array(NUM_DISPLAY_ELEMENTS);
 	children[0] = title;
 	children[1] = document.createElement('h4');
-	children[1].textContent = data.weather[0].main + ", " + data.weather[0].description;
-
-	let i = 2;
-	while (i < 7) {
-		children[i] = p();
-		i++;
+	if (data.weather.length > 0) {
+		children[1].textContent = data.weather[0].main + ", " + data.weather[0].description;
 	}
-	children[2].textContent = "Temperature: " + data.main.temp + "\u00B0 C";
-	children[3].textContent = "Feels like: " + data.main.feels_like + "\u00B0 C";
+
+	for (let i = 2; i < NUM_DISPLAY_ELEMENTS; i++) {
+		children[i] = p();
+	}
+	children[2].textContent = "Temperature: " + data.main.temp + CELCIUS_SUFFIX;
+	children[3].textContent = "Feels like: " + data.main.feels_like + CELCIUS_SUFFIX;
 	children[4].textContent = "Humidity: " + data.main.humidity + "%";
 	children[5].textContent = "Pressure: " + data.main.pressure + " hPa";
 	children[6].textContent = "Wind: " + data.wind.speed + " m/sec";
 	
 	const results = getResultsElement();
-    const app = document.getElementById('root');
+	const app = document.getElementById('root');
 	app.appendChild(results);
 	for (const el of children) {
 		results.appendChild(el);
